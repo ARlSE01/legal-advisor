@@ -38,13 +38,13 @@ def get_vector_store(text_chunks):
 #Give context to the model and select the model as well as accuracy of result with temperature setting
 def get_conversational_chain():
     prompt_template = """
-    Answer the question as detailed as possible from the provided context, if the answer is not available directly in ths context use the context as reference.Your job is to assist users by solving there coding problems or queries when the documentation is provided to you as context. \n\n
+    Generate insightful responses based on the context provided, offering your unique insights and analysis. \n\n
     Context:\n {context}?\n
     Question: \n{question}\n
 
     Answer:
     """
-    model = ChatGoogleGenerativeAI(model="gemini-pro",
+    model = ChatGoogleGenerativeAI(model="models/gemini-1.5-pro",
                              temperature=0.5)
     prompt = PromptTemplate(template = prompt_template, input_variables = ["context", "question"])
     chain = load_qa_chain(model, chain_type="stuff", prompt=prompt)
@@ -64,8 +64,8 @@ def user_input(user_question):
 
 
 def main():
-    st.set_page_config("BETTER CALL SAUL!")
-    st.header("Need help with Docs? We are here")
+    st.set_page_config("Script Wizard!")
+    st.header("Script Wizard")
 
     user_question = st.text_input("Ask a Question from the PDF Files")
 
