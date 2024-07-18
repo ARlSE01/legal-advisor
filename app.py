@@ -38,9 +38,7 @@ def get_vector_store(text_chunks):
 #Give context to the model and select the model as well as accuracy of result with temperature setting
 def get_conversational_chain():
     prompt_template = """
-    Answer the question as detailed as possible from the provided context, make sure to provide all the details, if the answer is not in
-    provided context just say, "answer is not available in the context", don't provide the wrong answer. Your aim is to assist non-lawyers by
-    providing easy-to-understand insights, risk assessments, and actionable advice on legal documents\n\n
+    Answer the question as detailed as possible from the provided context, if the answer is not available directly in ths context use the context as reference.Your job is to assist users by solving there coding problems or queries when the documentation is provided to you as context. \n\n
     Context:\n {context}?\n
     Question: \n{question}\n
 
@@ -67,7 +65,7 @@ def user_input(user_question):
 
 def main():
     st.set_page_config("BETTER CALL SAUL!")
-    st.header("Chat With Us To Get Legal Adivse For Free 💁")
+    st.header("Need help with Docs? We are here")
 
     user_question = st.text_input("Ask a Question from the PDF Files")
 
